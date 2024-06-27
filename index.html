@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+<title>STT</title>
+<link rel="stylesheet" type="text/css" href="leo.css">
+</head>
+
+<body>
+    <div class="hello">
+
+	    <div class="voice_to_text"> 
+	    	<h1>Speech To Text</h1>
+            <textarea row="5" cols"50 placeholder="Your voice mssg is here....." id="convert_text"></textarea>
+    
+        <button onclick="voice()">Voice To Text</button>
+        <button onclick="stopVoice()">Stop</button>
+           
+        </div>
+    </div>6
+  
+  
+
+   
+
+
+
+<script>
+    function voice(){
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-GB";
+        recognition.onresult = function(event){
+            console.log(event);
+            document.getElementById("convert_text").value = event.results[0][0].transcript;
+
+        }
+        recognition.start();
+    }
+    function stopVoice(){
+        if (recognition){
+            recognition.stop();
+            
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
